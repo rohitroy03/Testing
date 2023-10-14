@@ -30,10 +30,10 @@ async def search(bot, message):
           movies = await search_imdb(query)
           buttons = []
           for movie in movies: 
-              buttons.append([InlineKeyboardButton('Click To Check Spelling ✅', url=f'http://www.google.com/search?q={message.text.replace(" ", "%20")}%20Movie")])
+                            buttons.append([InlineKeyboardButton(movie['title'], callback_data=f"recheck_{movie['id']}")])
           msg = await message.reply_photo(photo="https://telegra.ph/file/cf6706158b0bfaf436f54.jpg",
                                           caption="<b><I>I Couldn't find anything related to Your Query😕.\nDid you mean any of these?</I></b>", 
-                                          reply_markup=InlineKeyboardMarkup(buttons))
+                                                                  reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('Click To Check Spelling ✅', url=f'http://www.google.com/search?q={message.text.replace(" ", "%20")}%20Movie')]
        else:
           msg = await message.reply_text(text=head+results, disable_web_page_preview=True)
        _time = (int(time()) + (15*60))
