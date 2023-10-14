@@ -18,14 +18,14 @@ async def search(bot, message):
        return    
     query   = message.text 
     head    = "<u>Here is the results 👇\n\n"
-    results = " " "\n\nPowered By </u> <b><I>@CyniteBackup</I></b>"
+    results = " "
     try:
        for channel in channels:
            async for msg in User.search_messages(chat_id=channel, query=query):
                name = (msg.text or msg.caption).split("\n")[0]
                if name in results:
                   continue 
-               results += f"<b><I>♻️ {name}\n🔗 {msg.link}</I></b>\n\n"                                                      
+               results += f"<b><I>♻️ {name}\n🔗 {msg.link}</I></b>\n\nPowered By </u> <b><I>@CyniteBackup</I></b>\n\n"                                                     
        if bool(results)==False:
           movies = await search_imdb(query)
           buttons = []
