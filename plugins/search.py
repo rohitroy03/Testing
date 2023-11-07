@@ -32,7 +32,7 @@
            for movie in movies:  
                buttons.append([InlineKeyboardButton(movie['title'], callback_data=f"recheck_{movie['id']}")]) 
            msg = await message.reply_photo(photo="https://graph.org/file/ac1a6b9cff40723df83d1.jpg", 
-                                           caption="<b><I>I Couldn't find anything related to Your Query😕.\nDid you mean any of these?</I></b>",
+                                           caption="<b><I>Search only Movie/Series Name Don't Write Extra Anything.\n\nLike This 👇\n/nTitanic ✅\nTitanic English Movie ❌\n\nLoki ✅\nLoki Season 2 ❌</I></b>",
         else: 
            msg = await message.reply_text(text=head+results, disable_web_page_preview=True) 
         _time = (int(time()) + (15*60)) 
